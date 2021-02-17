@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchingApp.Application", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchingApp.DDD", "SearchingApp.DDD\SearchingApp.DDD.csproj", "{3B6CAFD9-D8C5-4775-80B8-ABF373C9C452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchingApp.Api", "SearchingApp.Api\SearchingApp.Api.csproj", "{89F7514F-50E6-4D54-B95F-65ECEC82484F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchingApp.Api", "SearchingApp.Api\SearchingApp.Api.csproj", "{89F7514F-50E6-4D54-B95F-65ECEC82484F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchingApp.Domain", "SearchingApp.Domain\SearchingApp.Domain.csproj", "{1FB01A69-2E81-4B5C-BBC1-7E6917E0A718}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{89F7514F-50E6-4D54-B95F-65ECEC82484F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89F7514F-50E6-4D54-B95F-65ECEC82484F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89F7514F-50E6-4D54-B95F-65ECEC82484F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FB01A69-2E81-4B5C-BBC1-7E6917E0A718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FB01A69-2E81-4B5C-BBC1-7E6917E0A718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FB01A69-2E81-4B5C-BBC1-7E6917E0A718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FB01A69-2E81-4B5C-BBC1-7E6917E0A718}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

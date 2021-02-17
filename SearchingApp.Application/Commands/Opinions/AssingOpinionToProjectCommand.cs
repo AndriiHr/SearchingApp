@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace SearchingApp.Application.Commands.Opinions
 {
-    public class AssingOpionionToProjectCommand : IRequest
+    public class AssingOpinionToProjectCommand : IRequest
     {
         public int PorjectId { get; set; }
         public Opinion Opinion { get; set; }
     }
 
 
-    public class AssingOpionionToProjectCommandHandler : IRequestHandler<AssingOpionionToProjectCommand>
+    public class AssingOpionionToProjectCommandHandler : IRequestHandler<AssingOpinionToProjectCommand>
     {
         private readonly EFContext _efContext;
 
@@ -27,7 +27,7 @@ namespace SearchingApp.Application.Commands.Opinions
             _efContext = efContext;
         }
 
-        public async Task<Unit> Handle(AssingOpionionToProjectCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(AssingOpinionToProjectCommand request, CancellationToken cancellationToken)
         {
             var project = await _efContext.Projects.FirstOrDefaultAsync(x => x.Id == request.PorjectId);
             project.AddOpinion(request.Opinion);

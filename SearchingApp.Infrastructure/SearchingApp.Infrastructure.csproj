@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SearchingApp.DDD\SearchingApp.DDD.csproj" />
+    <ProjectReference Include="..\SearchingApp.Domain\SearchingApp.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

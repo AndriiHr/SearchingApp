@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 using SearchingApp.DDD.Entities.User;
+using SearchingApp.Domain.Repositories;
 using SearchingApp.Infrastructure.DbContexts;
 
 namespace SearchingApp.Application.Commands
@@ -14,19 +15,17 @@ namespace SearchingApp.Application.Commands
 
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
     {
-        private readonly EFContext _efContext;
+        private readonly IUserRepository _repository;
 
-        public CreateUserCommandHandler(EFContext efContext)
+        public CreateUserCommandHandler(IUserRepository repository)
         {
-            _efContext = efContext;
+            _repository = repository;
         }
 
         public async Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             request.User.SetPassword(request.Password);
-            _efContext.Users.Add(request.User);
-
-            await _efContext.SaveChangesAsync(cancellationToken);
+            await _repository.Add(request.User, cancellationToken);
 
             return Unit.Value;
         }

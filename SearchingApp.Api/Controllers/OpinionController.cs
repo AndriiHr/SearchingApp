@@ -34,7 +34,7 @@ namespace SearchingApp.Api.Controllers
         }
 
         [HttpPost("assing-opinion-to-project")]
-        public async Task<IActionResult> AssignUserToProject(AssingOpionionToProjectCommand request)
+        public async Task<IActionResult> AssignUserToProject(AssingOpinionToProjectCommand request)
         {
             await _mediator.Send(request);
             return Ok();

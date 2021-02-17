@@ -9,9 +9,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SearchingApp.Application.Commands;
+using SearchingApp.Domain.Repositories;
 using SearchingApp.Infrastructure.DbContexts;
 using SearchingApp.Infrastructure.Interceptor;
-
+using SearchingApp.Infrastructure.Repositories;
 
 namespace SeachingApp.Api
 {
@@ -26,7 +27,10 @@ namespace SeachingApp.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();           
+            services.AddControllers();
+
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+
             services.AddMediatR(typeof(CreateUserCommand).GetTypeInfo().Assembly);
             services.AddScoped<DomainEventDispatcher>();
             services.AddDbContext<EFContext>((serviceProvider, options) =>
@@ -39,7 +43,7 @@ namespace SeachingApp.Api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "SeachingApp.Api", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SeachingApp.Api", Version = "v1" });
             });
         }
 
