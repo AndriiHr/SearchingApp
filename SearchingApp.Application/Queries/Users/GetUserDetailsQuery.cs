@@ -19,6 +19,7 @@ namespace SearchingApp.Application.Queries.Users
     {
         public User User { get; set; }
         public List<Project> Projects { get; set; }
+        
     }
 
     public class GetUserDetailsQueryHandler : IRequestHandler<GetUserDetailsQuery, GetUserDetailsResponse>
