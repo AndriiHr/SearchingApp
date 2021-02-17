@@ -6,22 +6,22 @@ using SearchingApp.Infrastructure.DbContexts;
 
 namespace SearchingApp.Application.Commands
 {
-    public class CreateUserRequest : IRequest
+    public class CreateUserCommand : IRequest
     {
         public User User { get; set; }
         public string Password { get; set; }
     }
 
-    public class CreateUserRequestHandler : IRequestHandler<CreateUserRequest>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
     {
         private readonly EFContext _efContext;
 
-        public CreateUserRequestHandler(EFContext efContext)
+        public CreateUserCommandHandler(EFContext efContext)
         {
             _efContext = efContext;
         }
 
-        public async Task<Unit> Handle(CreateUserRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             request.User.SetPassword(request.Password);
             _efContext.Users.Add(request.User);

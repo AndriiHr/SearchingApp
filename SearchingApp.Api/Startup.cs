@@ -27,7 +27,7 @@ namespace SeachingApp.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();           
-            services.AddMediatR(typeof(CreateUserRequest).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(CreateUserCommand).GetTypeInfo().Assembly);
             services.AddScoped<DomainEventDispatcher>();
             services.AddDbContext<EFContext>((serviceProvider, options) =>
             {

@@ -1,24 +1,26 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SearchingApp.Application.Queries.Users;
+using SearchingApp.Application.Commands.Projects;
+using SearchingApp.Application.Queries.Projects;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using SearchingApp.Application.Commands;
 
 namespace SearchingApp.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController : ControllerBase
+    public class ProjectController: ControllerBase
     {
         private readonly IMediator _mediator;
-
-        public UserController(IMediator mediator)
+        public ProjectController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        [HttpGet("get-with-filter")]
-        public async Task<IActionResult> GetActiveUsers(GetActiveUsersQuery request)
+        [HttpGet("get-all")]
+        public async Task<IActionResult> GetProjects(GetProjectsQuery request)
         {
             var response = await _mediator.Send(request);
 
@@ -26,7 +28,7 @@ namespace SearchingApp.Api.Controllers
         }
 
         [HttpGet("get-by-id")]
-        public async Task<IActionResult> GetUserDetails(GetUserDetailsQuery request)
+        public async Task<IActionResult> GetProjectDetails(GetProjectDetailsQuery request)
         {
             var response = await _mediator.Send(request);
 
@@ -34,34 +36,32 @@ namespace SearchingApp.Api.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> CreateUser(CreateUserCommand request)
+        public async Task<IActionResult> CreateProject(CreateProjectCommand request)
         {
             await _mediator.Send(request);
             return Ok();
         }
 
-
-        [HttpPost("assing-user-to-ptoject")]
-        public async Task<IActionResult> AssignUserToProject(AssignUserToProjectCommand request)
+        [HttpPost("assing-project-to-user")]
+        public async Task<IActionResult> AssignUserToProject(AssignProjectToUserCommand request)
         {
             await _mediator.Send(request);
             return Ok();
         }
-
-
 
         [HttpPut("edit")]
-        public async Task<IActionResult> EditUser(EditUserCommand request)
+        public async Task<IActionResult> EditProject(EditProjectCommand request)
         {
             await _mediator.Send(request);
             return Ok();
         }
 
         [HttpDelete("delete")]
-        public async Task<IActionResult> DeleteUser(DeleteUserCommand request)
+        public async Task<IActionResult> DeleteProject(DeleleProjectCommand request)
         {
             await _mediator.Send(request);
             return Ok();
         }
+
     }
 }

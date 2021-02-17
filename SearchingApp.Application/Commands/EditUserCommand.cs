@@ -7,21 +7,20 @@ using System.Threading.Tasks;
 
 namespace SearchingApp.Application.Commands
 {
-    public class EditUserRequest : IRequest
+    public class EditUserCommand : IRequest
     {
         public User User { get; set; }
     }
 
-
-    public class EditUserRequestHandler : IRequestHandler<EditUserRequest>
+    public class EditUserCommandtHandler : IRequestHandler<EditUserCommand>
     {
         private EFContext _efContext;
-        public EditUserRequestHandler(EFContext efContext)
+        public EditUserCommandtHandler(EFContext efContext)
         {
             _efContext = efContext;
         }
 
-        public async Task<Unit> Handle(EditUserRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(EditUserCommand request, CancellationToken cancellationToken)
         {
             _efContext.Entry(request.User).State = EntityState.Modified;
             await _efContext.SaveChangesAsync();

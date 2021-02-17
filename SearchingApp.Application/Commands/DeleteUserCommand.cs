@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace SearchingApp.Application.Commands
 {
-    public class DeleteUserRequest : IRequest
+    public class DeleteUserCommand : IRequest
     {
         public int UserId { get; set; }
     }
 
-    public class DeleteUserRequestHandler : IRequestHandler<DeleteUserRequest>
+    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>
     {
         private readonly EFContext _efContext;
-        public DeleteUserRequestHandler(EFContext efContext)
+        public DeleteUserCommandHandler(EFContext efContext)
         {
             _efContext = efContext;
         }
 
-        public async Task<Unit> Handle(DeleteUserRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _efContext.Users.FirstOrDefaultAsync(x => x.Id == request.UserId);
             user.IsActive = false;
